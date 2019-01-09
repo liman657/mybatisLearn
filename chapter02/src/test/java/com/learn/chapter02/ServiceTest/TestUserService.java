@@ -37,8 +37,11 @@ public class TestUserService {
     public void testSelectRolesByUserId(){
         Integer userId = 1;
         List<SysRole> roleList = userService.selectRolesByUserId(userId);
-
-        System.out.println(roleList.get(0));
+        System.out.println("roleList的size:"+roleList.size());
+        for(int i=0;i<roleList.size();i++){
+            System.out.println(roleList.get(i));
+        }
+//        System.out.println();
     }
 
 }
