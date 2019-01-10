@@ -2,6 +2,7 @@ package com.learn.chapter02.ServiceTest;
 
 import com.learn.chapter02.domain.SysRole;
 import com.learn.chapter02.domain.SysRoleExtend;
+import com.learn.chapter02.domain.SysUser;
 import com.learn.chapter02.service.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -41,7 +43,19 @@ public class TestUserService {
         for(int i=0;i<roleList.size();i++){
             System.out.println(roleList.get(i));
         }
-//        System.out.println();
+    }
+
+    @Test
+    public void testInsertUser(){
+        SysUser user = new SysUser();
+        user.setId(6L);
+        user.setUserEmail("liman@qq.com");
+        user.setUserInfo("liman just test");
+        user.setUserName("liman");
+        user.setUserPassword("123456");
+        user.setCreateTime(new Date());
+        user.setHeadImg(new byte[]{1,2,3});
+        userService.insertUser(user);
     }
 
 }

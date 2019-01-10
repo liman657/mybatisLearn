@@ -36,4 +36,8 @@ public class UserService {
         System.out.println(sysRoles.size());
         return sysRoles;
     }
+
+    public int insertUser(SysUser user){
+        return userMapper.insertUser(user);
+    }
 }
