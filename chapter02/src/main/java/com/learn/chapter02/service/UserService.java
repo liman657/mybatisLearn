@@ -2,6 +2,7 @@ package com.learn.chapter02.service;
 
 import com.learn.chapter02.dao.UserMapper;
 import com.learn.chapter02.domain.SysRole;
+import com.learn.chapter02.domain.SysRoleExtend;
 import com.learn.chapter02.domain.SysUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

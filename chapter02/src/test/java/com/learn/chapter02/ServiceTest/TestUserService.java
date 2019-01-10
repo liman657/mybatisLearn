@@ -1,8 +1,8 @@
 package com.learn.chapter02.ServiceTest;
 
 import com.learn.chapter02.domain.SysRole;
+import com.learn.chapter02.domain.SysRoleExtend;
 import com.learn.chapter02.service.UserService;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +25,7 @@ public class TestUserService {
     @Test
     public void testGetUserById() {
         Integer id = 1;
-        userService.getUserById(1);
+        userService.getUserById(id);
     }
 
     @Test

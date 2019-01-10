@@ -14,6 +14,8 @@ public class SysRole {
     private String createBy;
     private Date createTime;
 
+    private SysUser sysUser;
+
     public Integer getId() {
         return id;
     }
@@ -54,6 +56,14 @@ public class SysRole {
         this.createTime = createTime;
     }
 
+    public SysUser getSysUser() {
+        return sysUser;
+    }
+
+    public void setSysUser(SysUser sysUser) {
+        this.sysUser = sysUser;
+    }
+
     @Override
     public String toString() {
         return "SysRole{" +
@@ -62,6 +72,7 @@ public class SysRole {
                 ", enabled=" + enabled +
                 ", createBy='" + createBy + '\'' +
                 ", createTime=" + createTime +
+                ", sysUser=" + sysUser +
                 '}';
     }
 }
