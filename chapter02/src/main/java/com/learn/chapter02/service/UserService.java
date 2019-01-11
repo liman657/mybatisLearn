@@ -40,4 +40,22 @@ public class UserService {
     public int insertUser(SysUser user){
         return userMapper.insertUser(user);
     }
+
+    /**
+     * 使用jdbc的方式返回主键自增的值
+     * @param user
+     * @return
+     */
+    public int insertUserTow(SysUser user){
+        return userMapper.insertUserTwo(user);
+    }
+
+    /**
+     * 使用selectKey的方式返回主键自增的值
+     * @param user
+     * @return
+     */
+    public int insertUserThird(SysUser user){
+        return userMapper.insertUserThird(user);
+    }
 }

@@ -58,4 +58,28 @@ public class TestUserService {
         userService.insertUser(user);
     }
 
+    @Test
+    public void testInsertUserTwo(){
+        SysUser user = new SysUser();
+        user.setCreateTime(new Date());
+        user.setHeadImg(new byte[]{2,3,5});
+        user.setUserEmail("test@test.com");
+        user.setUserInfo("testInfo");
+        user.setUserName("testJdbcId");
+        user.setUserPassword("testJdbcPwd");
+        userService.insertUserTow(user);
+    }
+
+    @Test
+    public void testInsertUserThird(){
+        SysUser user = new SysUser();
+        user.setCreateTime(new Date());
+        user.setHeadImg(new byte[]{2,3,5});
+        user.setUserEmail("test@test.com");
+        user.setUserInfo("testInfo");
+        user.setUserName("testJdbcId");
+        user.setUserPassword("testJdbcPwd");
+        userService.insertUserThird(user);
+    }
+
 }

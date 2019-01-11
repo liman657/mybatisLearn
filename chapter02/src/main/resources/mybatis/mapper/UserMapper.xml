@@ -72,4 +72,23 @@
         insert into sys_user (id,user_name,user_password,user_email,user_info,head_img,create_time)
         values(#{id},#{userName},#{userPassword},#{userEmail},#{userInfo},#{headImg,jdbcType=BLOB},#{createTime,jdbcType=DATE})
     </insert>
+
+    <!--
+        插入数据库后获得自增主键，使用JDBC方式
+        useGeneratedKeys配置成true之后，会使用JDBC的getGeneratedKey方法的主键，然后将其赋值给keyProperty配置的属性值
+        但是这种方式只是使用于提供主键自增功能的数据库
+    -->
+    <insert id = "insertUserTwo" useGeneratedKeys="true" keyProperty="id">
+        insert into sys_user (user_name,user_password,user_email,user_info,head_img,create_time)
+        values(#{userName},#{userPassword},#{userEmail},#{userInfo},#{headImg,jdbcType=BLOB},#{createTime,jdbcType=TIMESTAMP})
+
+    </insert>
+
+    <insert id="insertUserThird">
+        insert into sys_user (user_name,user_password,user_email,user_info,head_img,create_time)
+        values (#{userName},#{userPassword},#{userEmail},#{userInfo},#{headImg,jdbcType=BLOB},#{createTime,jdbcType=TIMESTAMP})
+        <selectKey keyColumn="id" resultType="long" keyProperty="id" order="AFTER">
+            SELECT LAST_INSERT_ID()<!--MySQL中自动获取主键的函数-->
+        </selectKey>
+    </insert>
 </mapper>

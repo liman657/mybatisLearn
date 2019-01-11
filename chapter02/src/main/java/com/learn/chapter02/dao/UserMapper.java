@@ -21,4 +21,8 @@ public interface UserMapper {
     List<SysRole> selectRolesByUserId(Integer userId);
 
     int insertUser(SysUser sysUser);
+
+    int insertUserTwo(SysUser sysUser);
+
+    int insertUserThird(SysUser sysUser);
 }
