@@ -2,7 +2,6 @@ package com.learn.chapter02.service;
 
 import com.learn.chapter02.dao.UserMapper;
 import com.learn.chapter02.domain.SysRole;
-import com.learn.chapter02.domain.SysRoleExtend;
 import com.learn.chapter02.domain.SysUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -57,5 +56,30 @@ public class UserService {
      */
     public int insertUserThird(SysUser user){
         return userMapper.insertUserThird(user);
+    }
+
+    /**
+     * update用法
+     * @param id
+     * @return
+     */
+    public int updateUserById(Integer id){
+        SysUser sysUser = userMapper.getUserById(id);
+        sysUser.setUserName("updateTest");
+        return userMapper.updateUserById(sysUser);
+    }
+
+    /**
+     * delete用法
+     * @param id
+     * @return
+     */
+    public int deleteUserById(Integer id){
+        SysUser sysUser = userMapper.getUserById(id);
+        return userMapper.deleteUserById(sysUser);
+    }
+
+    public List<SysRole> selectRolesByUserIdAndRoleEnabled(Long userId,Integer enabled){
+        return userMapper.selectRolesByUserIdAndRoleEnabled(userId,enabled);
     }
 }

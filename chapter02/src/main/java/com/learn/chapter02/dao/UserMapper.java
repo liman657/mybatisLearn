@@ -3,6 +3,7 @@ package com.learn.chapter02.dao;
 import com.learn.chapter02.domain.SysRole;
 import com.learn.chapter02.domain.SysRoleExtend;
 import com.learn.chapter02.domain.SysUser;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -25,4 +26,10 @@ public interface UserMapper {
     int insertUserTwo(SysUser sysUser);
 
     int insertUserThird(SysUser sysUser);
+
+    int updateUserById(SysUser sysUser);
+
+    int deleteUserById(SysUser sysUser);
+
+    List<SysRole> selectRolesByUserIdAndRoleEnabled(@Param("userId") Long userId, @Param("enabled") Integer enabled);
 }

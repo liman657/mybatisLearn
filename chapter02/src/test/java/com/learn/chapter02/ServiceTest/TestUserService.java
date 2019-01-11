@@ -1,7 +1,6 @@
 package com.learn.chapter02.ServiceTest;
 
 import com.learn.chapter02.domain.SysRole;
-import com.learn.chapter02.domain.SysRoleExtend;
 import com.learn.chapter02.domain.SysUser;
 import com.learn.chapter02.service.UserService;
 import org.junit.Test;
@@ -80,6 +79,24 @@ public class TestUserService {
         user.setUserName("testJdbcId");
         user.setUserPassword("testJdbcPwd");
         userService.insertUserThird(user);
+    }
+
+    @Test
+    public void testUpdateSysUserById(){
+        userService.updateUserById(1001);
+    }
+
+    @Test
+    public void testDeleteUserById(){
+        userService.deleteUserById(1005);
+    }
+
+    @Test
+    public void testSelectRolesByUserIdAndRoleEnabled(){
+        List<SysRole> sysRoles = userService.selectRolesByUserIdAndRoleEnabled(1L, 1);
+        for(SysRole sysRole:sysRoles){
+            System.out.println(sysRole.toString());
+        }
     }
 
 }
