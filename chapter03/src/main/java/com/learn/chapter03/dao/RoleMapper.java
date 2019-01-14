@@ -5,7 +5,7 @@ import org.apache.ibatis.annotations.*;
 
 /**
  * autor:liman
- * comment:
+ * comment:RoleMapper
  */
 
 @Mapper

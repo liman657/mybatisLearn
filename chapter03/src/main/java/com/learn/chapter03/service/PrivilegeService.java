@@ -20,7 +20,7 @@ public class PrivilegeService {
     @Autowired
     private PrivilegeMapper privilegeMapper;
 
-    public SysPrivilege selectSysPrivilegeById(Long id){
+    public SysPrivilege selectSysPrivilegeById(Long id) {
         return privilegeMapper.selectById(id);
     }
 

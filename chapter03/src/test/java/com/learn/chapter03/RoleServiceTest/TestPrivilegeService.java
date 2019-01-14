@@ -23,7 +23,7 @@ public class TestPrivilegeService {
     private PrivilegeService privilegeService;
 
     @Test
-    public void testSelectPrivilegeById(){
+    public void testSelectPrivilegeById() {
         Long id = 1L;
         System.out.println(privilegeService.selectSysPrivilegeById(id));
     }

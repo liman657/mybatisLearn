@@ -30,22 +30,22 @@ public class TestUserService {
     }
 
     @Test
-    public void testSelectAll(){
+    public void testSelectAll() {
         userService.selectAll();
     }
 
     @Test
-    public void testSelectRolesByUserId(){
+    public void testSelectRolesByUserId() {
         Integer userId = 1;
         List<SysRole> roleList = userService.selectRolesByUserId(userId);
-        System.out.println("roleList的size:"+roleList.size());
-        for(int i=0;i<roleList.size();i++){
+        System.out.println("roleList的size:" + roleList.size());
+        for (int i = 0; i < roleList.size(); i++) {
             System.out.println(roleList.get(i));
         }
     }
 
     @Test
-    public void testInsertUser(){
+    public void testInsertUser() {
         SysUser user = new SysUser();
         user.setId(6L);
         user.setUserEmail("liman@qq.com");
@@ -53,15 +53,15 @@ public class TestUserService {
         user.setUserName("liman");
         user.setUserPassword("123456");
         user.setCreateTime(new Date());
-        user.setHeadImg(new byte[]{1,2,3});
+        user.setHeadImg(new byte[]{1, 2, 3});
         userService.insertUser(user);
     }
 
     @Test
-    public void testInsertUserTwo(){
+    public void testInsertUserTwo() {
         SysUser user = new SysUser();
         user.setCreateTime(new Date());
-        user.setHeadImg(new byte[]{2,3,5});
+        user.setHeadImg(new byte[]{2, 3, 5});
         user.setUserEmail("test@test.com");
         user.setUserInfo("testInfo");
         user.setUserName("testJdbcId");
@@ -70,10 +70,10 @@ public class TestUserService {
     }
 
     @Test
-    public void testInsertUserThird(){
+    public void testInsertUserThird() {
         SysUser user = new SysUser();
         user.setCreateTime(new Date());
-        user.setHeadImg(new byte[]{2,3,5});
+        user.setHeadImg(new byte[]{2, 3, 5});
         user.setUserEmail("test@test.com");
         user.setUserInfo("testInfo");
         user.setUserName("testJdbcId");
@@ -82,19 +82,19 @@ public class TestUserService {
     }
 
     @Test
-    public void testUpdateSysUserById(){
+    public void testUpdateSysUserById() {
         userService.updateUserById(1001);
     }
 
     @Test
-    public void testDeleteUserById(){
+    public void testDeleteUserById() {
         userService.deleteUserById(1005);
     }
 
     @Test
-    public void testSelectRolesByUserIdAndRoleEnabled(){
+    public void testSelectRolesByUserIdAndRoleEnabled() {
         List<SysRole> sysRoles = userService.selectRolesByUserIdAndRoleEnabled(1L, 1);
-        for(SysRole sysRole:sysRoles){
+        for (SysRole sysRole : sysRoles) {
             System.out.println(sysRole.toString());
         }
     }

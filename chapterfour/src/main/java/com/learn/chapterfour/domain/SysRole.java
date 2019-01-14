@@ -1,4 +1,4 @@
-package com.learn.chapter02.domain;
+package com.learn.chapterfour.domain;
 
 import java.util.Date;
 

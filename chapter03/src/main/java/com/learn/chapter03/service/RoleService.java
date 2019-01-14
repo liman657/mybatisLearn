@@ -17,7 +17,7 @@ public class RoleService {
     @Autowired
     private RoleMapper roleMapper;
 
-    public SysRole selectSysRoleById(Long id){
+    public SysRole selectSysRoleById(Long id) {
         return roleMapper.selectById(id);
     }
 
@@ -25,23 +25,23 @@ public class RoleService {
         return roleMapper.selectById2(id);
     }
 
-    public int insertSysRoleWithIdReturn(SysRole sysRole){
+    public int insertSysRoleWithIdReturn(SysRole sysRole) {
         return roleMapper.insertSysRoleWithOutId(sysRole);
     }
 
-    public int insertSysRoleWithAutoIncreament(SysRole sysRole){
+    public int insertSysRoleWithAutoIncreament(SysRole sysRole) {
         return roleMapper.insertSysRoleWithAutoIncreament(sysRole);
     }
 
-    public int insertSysRoleWithIdNotAutoIncreament(SysRole sysRole){
+    public int insertSysRoleWithIdNotAutoIncreament(SysRole sysRole) {
         return roleMapper.insertSysRoleWithIdNotAutoIncreament(sysRole);
     }
 
-    public int updateSysRole(SysRole sysRole){
+    public int updateSysRole(SysRole sysRole) {
         return roleMapper.updateById(sysRole);
     }
 
-    public int deleteSysRoleById(Long id){
+    public int deleteSysRoleById(Long id) {
         return roleMapper.deleteById(id);
     }
 }

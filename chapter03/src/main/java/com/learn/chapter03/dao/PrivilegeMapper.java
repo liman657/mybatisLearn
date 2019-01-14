@@ -7,14 +7,12 @@ import org.apache.ibatis.annotations.SelectProvider;
 
 /**
  * autor:liman
- * mobilNo:15528212893
- * mail:657271181@qq.com
- * comment:
+ * comment:PrivilegeMapper
  */
 @Mapper
 public interface PrivilegeMapper {
 
-    @SelectProvider(type = PrivilegeProvider.class,method = "selectById")
+    @SelectProvider(type = PrivilegeProvider.class, method = "selectById")
     public SysPrivilege selectById(Long id);
 
 }

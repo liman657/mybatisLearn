@@ -25,7 +25,7 @@ public class TestRoleService {
     private RoleService roleService;
 
     @Test
-    public void testSelectRoleById(){
+    public void testSelectRoleById() {
         Long id = 1L;
         SysRole sysRole = roleService.selectSysRoleById(id);
         System.out.println(sysRole.getRoleName());
@@ -33,7 +33,7 @@ public class TestRoleService {
     }
 
     @Test
-    public void testSelectRoleById2(){
+    public void testSelectRoleById2() {
         Long id = 1L;
         SysRole sysRole = roleService.selectSysRoleById2(id);
         System.out.println(sysRole.getRoleName());
@@ -41,7 +41,7 @@ public class TestRoleService {
     }
 
     @Test
-    public void insertSysRoleWithIdReturn(){
+    public void insertSysRoleWithIdReturn() {
         SysRole sysRole = new SysRole();
         sysRole.setId(3L);
         sysRole.setRoleName("普通用户test");
@@ -52,7 +52,7 @@ public class TestRoleService {
     }
 
     @Test
-    public void testInsertSysRoleWithAutoIncrementId(){
+    public void testInsertSysRoleWithAutoIncrementId() {
         SysRole sysRole = new SysRole();
         sysRole.setRoleName("普通用户test");
         sysRole.setEnabled(1);
@@ -63,7 +63,7 @@ public class TestRoleService {
     }
 
     @Test
-    public void testInsertSysRoleWithIdNotAutoIncreament(){
+    public void testInsertSysRoleWithIdNotAutoIncreament() {
         SysRole sysRole = new SysRole();
         sysRole.setRoleName("普通用户test");
         sysRole.setEnabled(1);
@@ -74,15 +74,15 @@ public class TestRoleService {
     }
 
     @Test
-    public void testUpdateRoleById(){
+    public void testUpdateRoleById() {
         SysRole sysRole = roleService.selectSysRoleById2(7L);
-        System.out.println(sysRole.getCreateBy()+":"+sysRole.getCreateTime());
+        System.out.println(sysRole.getCreateBy() + ":" + sysRole.getCreateTime());
         sysRole.setRoleName("updateTest");
         roleService.updateSysRole(sysRole);
     }
 
     @Test
-    public void testDeleteSysRoleById(){
+    public void testDeleteSysRoleById() {
         Long id = 7L;
         roleService.deleteSysRoleById(id);
     }
