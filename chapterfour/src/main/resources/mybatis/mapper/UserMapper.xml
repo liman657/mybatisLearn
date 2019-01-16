@@ -12,6 +12,10 @@
         <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
     </resultMap>
 
+    <select id="selectUserById" resultMap="BaseResultMap">
+        select * from sys_user where id = #{id}
+    </select>
+
     <!--没有任何考虑的条件查询，但是如果出现提供的参数为空，就没有办法了-->
     <select id="selectByUserNameAndEmail" resultMap="BaseResultMap">
         select * from sys_user where user_name like concat('%',#{userName},'%') and user_email = #{userEmail}
@@ -20,10 +24,45 @@
     <select id="selectByDynamicSQL" resultMap="BaseResultMap">
         select * from sys_user where 1=1
         <if test="userName!=null and userName !=''">
-        and user_name like concat('%',#{userName},'%')
+            and user_name like concat('%',#{userName},'%')
         </if>
         <if test="userEmail != null and userEmail != ''">
-        and user_email = #{userEmail}
+            and user_email = #{userEmail}
         </if>
     </select>
+
+    <update id="updateByIdSelective">
+        update sys_user set
+        <if test="userName!=null and userName !=''">
+            user_name = #{userName},
+        </if>
+        <if test="userPassword!=null and userPassword !=''">
+            user_password = #{userPassword},
+        </if>
+        <if test="userEmail!=null and userEmail !=''">
+            user_email = #{userEmail},
+        </if>
+        <if test="userInfo!=null and userInfo !=''">
+            user_info = #{userInfo},
+        </if>
+        <if test="headImg!=null">
+            head_img = #{headImg},
+        </if>
+        <if test="userName!=null">
+            create_time = #{createTime,jdbcType=TIMESTAMP},
+        </if>
+        id = #{id}
+
+        where id = #{id}
+    </update>
+
+    <insert id="insertSysUserDynamicSQL" useGeneratedKeys="true" keyProperty="id">
+        insert into sys_user(user_name,user_password,
+        <if test="userEmail != null and userEmail != ''">user_email,</if>
+        user_info,head_img,create_time) values (#{userName},#{userPassword},
+        <if test="userEmail != null and userEmail !=''">#{userEmail},</if>
+        #{userInfo},#{headImg,jdbcType = BLOB},
+        #{createTime,jdbcType=TIMESTAMP}
+        )
+    </insert>
 </mapper>
