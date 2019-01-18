@@ -82,4 +82,17 @@
         </choose>
 
     </select>
+
+    <!--将where标签也加入了，这样就避免了写1=1的逻辑，这里当if条件都不满足的时候where中没有内容-->
+    <select id="selectByUser" resultMap="BaseResultMap">
+        select * from sys_user
+        <where>
+            <if test="userName != null and userName !=''">
+                and user_name like concat('%',#{userName},'%')
+            </if>
+            <if test="userEmail != null and userEmail != ''">
+                and user_email = #{userEmail}
+            </if>
+        </where>
+    </select>
 </mapper>
