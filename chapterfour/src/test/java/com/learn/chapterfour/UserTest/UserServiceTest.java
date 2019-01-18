@@ -66,4 +66,18 @@ public class UserServiceTest {
         String userName = "liman";
         System.out.println(userService.selectUserByIdOrUserName(id,userName));
     }
+
+    @Test
+    public void testSelectByUser(){
+        String userName = "admin";
+        String userEmail = "admin@mybatis.tk";
+        System.out.println(userService.selectByUser(userName,userEmail));
+    }
+
+    @Test
+    public void testUpdateByIdSelectiveBySet(){
+        SysUser sysUser = userService.selectUserById(1001L);
+        sysUser.setUserPassword("updatePwd");
+        System.out.println(userService.updateByIdSelectiveBySet(sysUser));
+    }
 }

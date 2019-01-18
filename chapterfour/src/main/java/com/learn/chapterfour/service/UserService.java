@@ -39,4 +39,12 @@ public class UserService {
     public SysUser selectUserByIdOrUserName(Long id,String userName){
         return userMapper.selectUserByIdOrUserName(id,userName);
     }
+
+    public SysUser selectByUser(String userName,String userEmail){
+        return userMapper.selectByUser(userName,userEmail);
+    }
+
+    public int updateByIdSelectiveBySet(SysUser sysUser){
+        return userMapper.updateByIdSelectiveBySet(sysUser);
+    }
 }
