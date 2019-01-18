@@ -80,4 +80,10 @@ public class UserServiceTest {
         sysUser.setUserPassword("updatePwd");
         System.out.println(userService.updateByIdSelectiveBySet(sysUser));
     }
+
+    @Test
+    public void testSelectByIdList(){
+        Long[] ids = {1L,1001L};
+        System.out.println(userService.selectByIdList(ids));
+    }
 }

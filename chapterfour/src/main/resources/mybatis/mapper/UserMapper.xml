@@ -122,4 +122,15 @@
         </set>
         where id = #{id}
     </update>
+
+    <!--foreach的用法-->
+    <select id="selectByIdList" resultMap="BaseResultMap">
+
+        select * from sys_user
+        where id in
+        <foreach collection="ids" open="(" close=")" separator="," item="id" index="i">
+          #{id}
+        </foreach>
+
+    </select>
 </mapper>

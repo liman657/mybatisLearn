@@ -29,4 +29,6 @@ public interface UserMapper {
     public SysUser selectByUser(@Param("userName") String userName,@Param("userEmail") String userEmail);
 
     public int updateByIdSelectiveBySet(SysUser sysUser);
+
+    public List<SysUser> selectByIdList(@Param("ids") Long[] ids);
 }

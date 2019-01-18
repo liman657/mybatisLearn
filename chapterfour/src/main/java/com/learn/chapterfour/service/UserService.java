@@ -5,6 +5,8 @@ import com.learn.chapterfour.domain.SysUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 /**
  * autor:liman
@@ -46,5 +48,9 @@ public class UserService {
 
     public int updateByIdSelectiveBySet(SysUser sysUser){
         return userMapper.updateByIdSelectiveBySet(sysUser);
+    }
+
+    public List<SysUser> selectByIdList(Long[] ids){
+        return userMapper.selectByIdList(ids);
     }
 }
