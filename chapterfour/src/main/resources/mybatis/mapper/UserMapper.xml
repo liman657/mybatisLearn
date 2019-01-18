@@ -65,4 +65,21 @@
         #{createTime,jdbcType=TIMESTAMP}
         )
     </insert>
+
+    <select id="selectUserByIdOrUserName" resultMap="BaseResultMap">
+
+        select * from sys_user where 1 =1
+        <choose>
+            <when test="id != null">
+                and id = #{id}
+            </when>
+            <when test="userName != null and userName != ''">
+                and user_name = #{userName}
+            </when>
+            <otherwise>
+                1 = 2
+            </otherwise>
+        </choose>
+
+    </select>
 </mapper>

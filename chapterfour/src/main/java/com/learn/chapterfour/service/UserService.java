@@ -35,4 +35,8 @@ public class UserService {
     public int insertSysUserDynamicSQL(SysUser sysUser){
         return userMapper.insertSysUserDynamicSQL(sysUser);
     }
+
+    public SysUser selectUserByIdOrUserName(Long id,String userName){
+        return userMapper.selectUserByIdOrUserName(id,userName);
+    }
 }

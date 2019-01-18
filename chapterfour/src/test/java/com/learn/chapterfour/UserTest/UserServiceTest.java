@@ -59,4 +59,11 @@ public class UserServiceTest {
         System.out.println(sysUser.getId());
         System.out.println(i);
     }
+
+    @Test
+    public void testSelectUserByIdOrUserName(){
+        Long id = 1L;
+        String userName = "liman";
+        System.out.println(userService.selectUserByIdOrUserName(id,userName));
+    }
 }

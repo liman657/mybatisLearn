@@ -23,4 +23,6 @@ public interface UserMapper {
     public SysUser selectUserById(Long id);
 
     public int insertSysUserDynamicSQL(SysUser sysUser);
+
+    public SysUser selectUserByIdOrUserName(@Param("id") Long id,@Param("userName") String userName);
 }
