@@ -31,4 +31,6 @@ public interface UserMapper {
     public int updateByIdSelectiveBySet(SysUser sysUser);
 
     public List<SysUser> selectByIdList(@Param("ids") Long[] ids);
+
+    public int insertUsers(@Param("users") List<SysUser> users);
 }

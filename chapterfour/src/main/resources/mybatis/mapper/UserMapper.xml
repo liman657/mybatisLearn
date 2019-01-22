@@ -125,12 +125,34 @@
 
     <!--foreach的用法-->
     <select id="selectByIdList" resultMap="BaseResultMap">
-
         select * from sys_user
         where id in
         <foreach collection="ids" open="(" close=")" separator="," item="id" index="i">
           #{id}
         </foreach>
-
     </select>
+
+    <!--foreach实现批量插入-->
+    <insert id="insertUsers" useGeneratedKeys="true" keyProperty="id">
+
+        insert into sys_user (user_name,user_password,user_email,user_info,head_img,create_time)
+        values
+        <foreach collection="users" item="user" separator=",">
+            (
+            #{user.userName},#{user.userPassword},#{user.userEmail},
+            #{user.userInfo},#{user.headImg,jdbcType=BLOB},
+            #{user.createTime,jdbcType=TIMESTAMP})
+        </foreach>
+
+    </insert>
+
+    <!--foreach实现动态update  暂时没加入实例-->
+    <update id="updateUsers">
+        update sys_user
+        set
+        <foreach collection="values" item="val" index="key" separator=",">
+            ${key} = #{val}
+        </foreach>
+        where id = #{id}
+    </update>
 </mapper>

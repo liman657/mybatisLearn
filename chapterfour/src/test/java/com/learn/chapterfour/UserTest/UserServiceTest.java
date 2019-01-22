@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * autor:liman
@@ -85,5 +87,18 @@ public class UserServiceTest {
     public void testSelectByIdList(){
         Long[] ids = {1L,1001L};
         System.out.println(userService.selectByIdList(ids));
+    }
+
+    @Test
+    public void insertUsers(){
+        List<SysUser> users = new ArrayList<SysUser>();
+        for(int i = 0;i<2;i++){
+            SysUser sysUser = new SysUser();
+            sysUser.setUserName("test"+i);
+            sysUser.setUserPassword("12345"+i);
+            sysUser.setUserEmail("test"+i+"@test.com");
+            users.add(sysUser);
+        }
+        userService.insertUsers(users);
     }
 }

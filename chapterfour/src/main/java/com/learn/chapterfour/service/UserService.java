@@ -53,4 +53,8 @@ public class UserService {
     public List<SysUser> selectByIdList(Long[] ids){
         return userMapper.selectByIdList(ids);
     }
+
+    public int insertUsers(List<SysUser> users){
+        return userMapper.insertUsers(users);
+    }
 }
