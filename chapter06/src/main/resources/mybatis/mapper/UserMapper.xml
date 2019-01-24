@@ -12,7 +12,25 @@
         <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
     </resultMap>
 
-    <!---->
+    <!--使用resultMap映射一对一-->
+    <resultMap id="userRoleMap" type="com.learn.chapter06.domain.SysUser">
+        <id property="id" column="id"></id>
+        <result property="userName" column="user_name"></result>
+        <result property="userPassword" column="user_password"></result>
+        <result property="userEmail" column="user_email"></result>
+        <result property="userInfo" column="user_info"></result>
+        <result property="headImg" column="head_img"></result>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+
+        <!--role相关属性-->
+        <result property="sysRole.id" column="role_id"></result>
+        <result property="sysRole.roleName" column="role_name"></result>
+        <result property="sysRole.enabled" column="enabled"></result>
+        <result property="sysRole.createBy" column="create_by"></result>
+        <result property="sysRole.createTime" column="role_create_time" jdbcType="TIMESTAMP"></result>
+    </resultMap>
+
+    <!--内嵌对象进行复杂查询-->
     <select id="selectUserAndRoleByUserId" resultMap="BaseResultMap">
         select
         u.user_name userName,
@@ -26,6 +44,26 @@
         r.enabled "sysRole.enabled",
         r.create_by "sysRole.createBy",
         r.create_time "sysRole.createTime"
+        from sys_user u
+        inner join sys_user_role ur on u.id = ur.user_id
+        inner join sys_role r on ur.role_id = r.id
+        where u.id = #{id}
+    </select>
+
+    <select id="selectUserAndRoleById2" resultMap="userRoleMap">
+        select
+        u.id,
+        u.user_name,
+        u.user_password,
+        u.user_email,
+        u.user_info,
+        u.head_img,
+        u.create_time,
+        r.id role_id,
+        r.enabled enabled,
+        r.role_name,
+        r.create_by create_by,
+        r.create_time role_create_time
         from sys_user u
         inner join sys_user_role ur on u.id = ur.user_id
         inner join sys_role r on ur.role_id = r.id

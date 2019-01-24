@@ -23,4 +23,8 @@ public class UserService {
         return userMapper.selectUserAndRoleByUserId(id);
     }
 
+    public List<SysUser> selectUserAndRoleById2(Long id){
+        return userMapper.selectUserAndRoleById2(id);
+    }
+
 }

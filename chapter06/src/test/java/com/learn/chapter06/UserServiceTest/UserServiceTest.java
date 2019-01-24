@@ -29,4 +29,11 @@ public class UserServiceTest {
         }
     }
 
+    @Test
+    public void testSelectUserAndRoleById2(){
+        List<SysUser> sysUsers = userService.selectUserAndRoleById2(1L);
+        for(SysUser sysUser:sysUsers){
+            System.out.println(sysUser.getSysRole().getRoleName());
+        }
+    }
 }
