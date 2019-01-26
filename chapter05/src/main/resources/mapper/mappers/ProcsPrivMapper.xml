@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.learn.chapter05.dao.ProcsPrivMapper" >
+  <resultMap id="BaseResultMap" type="com.learn.chapter05.domain.ProcsPriv" >
+    <result column="Host" property="host" jdbcType="CHAR" />
+    <result column="Db" property="db" jdbcType="CHAR" />
+    <result column="User" property="user" jdbcType="CHAR" />
+    <result column="Routine_name" property="routineName" jdbcType="CHAR" />
+    <result column="Routine_type" property="routineType" jdbcType="CHAR" />
+    <result column="Grantor" property="grantor" jdbcType="CHAR" />
+    <result column="Proc_priv" property="procPriv" jdbcType="CHAR" />
+    <result column="Timestamp" property="timestamp" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <insert id="insert" parameterType="com.learn.chapter05.domain.ProcsPriv" >
+    insert into procs_priv (`Host`, Db, `User`, `Routine_name`, 
+      Routine_type, Grantor, Proc_priv, 
+      `Timestamp`)
+    values (#{host,jdbcType=CHAR}, #{db,jdbcType=CHAR}, #{user,jdbcType=CHAR}, #{routineName,jdbcType=CHAR}, 
+      #{routineType,jdbcType=CHAR}, #{grantor,jdbcType=CHAR}, #{procPriv,jdbcType=CHAR}, 
+      #{timestamp,jdbcType=TIMESTAMP})
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select `Host`, Db, `User`, `Routine_name`, Routine_type, Grantor, Proc_priv, `Timestamp`
+    from procs_priv
+  </select>
+</mapper>

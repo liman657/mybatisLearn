@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.learn.chapter05.dao.ServerCostMapper" >
+  <resultMap id="BaseResultMap" type="com.learn.chapter05.domain.ServerCost" >
+    <result column="cost_name" property="costName" jdbcType="VARCHAR" />
+    <result column="cost_value" property="costValue" jdbcType="REAL" />
+    <result column="last_update" property="lastUpdate" jdbcType="TIMESTAMP" />
+    <result column="comment" property="comment" jdbcType="VARCHAR" />
+  </resultMap>
+  <insert id="insert" parameterType="com.learn.chapter05.domain.ServerCost" >
+    insert into server_cost (cost_name, cost_value, last_update, 
+      `comment`)
+    values (#{costName,jdbcType=VARCHAR}, #{costValue,jdbcType=REAL}, #{lastUpdate,jdbcType=TIMESTAMP}, 
+      #{comment,jdbcType=VARCHAR})
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select cost_name, cost_value, last_update, `comment`
+    from server_cost
+  </select>
+</mapper>

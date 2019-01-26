@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.learn.chapter05.dao.TableHandlesMapper" >
+  <resultMap id="BaseResultMap" type="com.learn.chapter05.domain.TableHandles" >
+    <result column="OBJECT_TYPE" property="objectType" jdbcType="VARCHAR" />
+    <result column="OBJECT_SCHEMA" property="objectSchema" jdbcType="VARCHAR" />
+    <result column="OBJECT_NAME" property="objectName" jdbcType="VARCHAR" />
+    <result column="OBJECT_INSTANCE_BEGIN" property="objectInstanceBegin" jdbcType="BIGINT" />
+    <result column="OWNER_THREAD_ID" property="ownerThreadId" jdbcType="BIGINT" />
+    <result column="OWNER_EVENT_ID" property="ownerEventId" jdbcType="BIGINT" />
+    <result column="INTERNAL_LOCK" property="internalLock" jdbcType="VARCHAR" />
+    <result column="EXTERNAL_LOCK" property="externalLock" jdbcType="VARCHAR" />
+  </resultMap>
+  <insert id="insert" parameterType="com.learn.chapter05.domain.TableHandles" >
+    insert into table_handles (OBJECT_TYPE, OBJECT_SCHEMA, OBJECT_NAME, 
+      OBJECT_INSTANCE_BEGIN, OWNER_THREAD_ID, OWNER_EVENT_ID, 
+      INTERNAL_LOCK, EXTERNAL_LOCK)
+    values (#{objectType,jdbcType=VARCHAR}, #{objectSchema,jdbcType=VARCHAR}, #{objectName,jdbcType=VARCHAR}, 
+      #{objectInstanceBegin,jdbcType=BIGINT}, #{ownerThreadId,jdbcType=BIGINT}, #{ownerEventId,jdbcType=BIGINT}, 
+      #{internalLock,jdbcType=VARCHAR}, #{externalLock,jdbcType=VARCHAR})
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select OBJECT_TYPE, OBJECT_SCHEMA, OBJECT_NAME, OBJECT_INSTANCE_BEGIN, OWNER_THREAD_ID, 
+    OWNER_EVENT_ID, INTERNAL_LOCK, EXTERNAL_LOCK
+    from table_handles
+  </select>
+</mapper>

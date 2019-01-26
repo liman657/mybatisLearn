@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.learn.chapter05.dao.HostSummaryMapper" >
+  <resultMap id="BaseResultMap" type="com.learn.chapter05.domain.HostSummary" >
+    <result column="host" property="host" jdbcType="VARCHAR" />
+    <result column="statements" property="statements" jdbcType="DECIMAL" />
+    <result column="table_scans" property="tableScans" jdbcType="DECIMAL" />
+    <result column="file_ios" property="fileIos" jdbcType="DECIMAL" />
+    <result column="current_connections" property="currentConnections" jdbcType="DECIMAL" />
+    <result column="total_connections" property="totalConnections" jdbcType="DECIMAL" />
+    <result column="unique_users" property="uniqueUsers" jdbcType="BIGINT" />
+    <result column="statement_latency" property="statementLatency" jdbcType="LONGVARCHAR" />
+    <result column="statement_avg_latency" property="statementAvgLatency" jdbcType="LONGVARCHAR" />
+    <result column="file_io_latency" property="fileIoLatency" jdbcType="LONGVARCHAR" />
+    <result column="current_memory" property="currentMemory" jdbcType="LONGVARCHAR" />
+    <result column="total_memory_allocated" property="totalMemoryAllocated" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <insert id="insert" parameterType="com.learn.chapter05.domain.HostSummary" >
+    insert into host_summary (`host`, statements, table_scans, 
+      file_ios, current_connections, total_connections, 
+      unique_users, statement_latency, statement_avg_latency, 
+      file_io_latency, current_memory, total_memory_allocated
+      )
+    values (#{host,jdbcType=VARCHAR}, #{statements,jdbcType=DECIMAL}, #{tableScans,jdbcType=DECIMAL}, 
+      #{fileIos,jdbcType=DECIMAL}, #{currentConnections,jdbcType=DECIMAL}, #{totalConnections,jdbcType=DECIMAL}, 
+      #{uniqueUsers,jdbcType=BIGINT}, #{statementLatency,jdbcType=LONGVARCHAR}, #{statementAvgLatency,jdbcType=LONGVARCHAR}, 
+      #{fileIoLatency,jdbcType=LONGVARCHAR}, #{currentMemory,jdbcType=LONGVARCHAR}, #{totalMemoryAllocated,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select `host`, statements, table_scans, file_ios, current_connections, total_connections, 
+    unique_users, statement_latency, statement_avg_latency, file_io_latency, current_memory, 
+    total_memory_allocated
+    from host_summary
+  </select>
+</mapper>

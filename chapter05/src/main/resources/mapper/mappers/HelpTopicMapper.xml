@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.learn.chapter05.dao.HelpTopicMapper" >
+  <resultMap id="BaseResultMap" type="com.learn.chapter05.domain.HelpTopic" >
+    <result column="help_topic_id" property="helpTopicId" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="CHAR" />
+    <result column="help_category_id" property="helpCategoryId" jdbcType="SMALLINT" />
+    <result column="description" property="description" jdbcType="LONGVARCHAR" />
+    <result column="example" property="example" jdbcType="LONGVARCHAR" />
+    <result column="url" property="url" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <insert id="insert" parameterType="com.learn.chapter05.domain.HelpTopic" >
+    insert into help_topic (help_topic_id, `name`, help_category_id, 
+      description, example, url
+      )
+    values (#{helpTopicId,jdbcType=INTEGER}, #{name,jdbcType=CHAR}, #{helpCategoryId,jdbcType=SMALLINT}, 
+      #{description,jdbcType=LONGVARCHAR}, #{example,jdbcType=LONGVARCHAR}, #{url,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select help_topic_id, `name`, help_category_id, description, example, url
+    from help_topic
+  </select>
+</mapper>

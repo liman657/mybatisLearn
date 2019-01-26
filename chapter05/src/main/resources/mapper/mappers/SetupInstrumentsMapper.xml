@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.learn.chapter05.dao.SetupInstrumentsMapper" >
+  <resultMap id="BaseResultMap" type="com.learn.chapter05.domain.SetupInstruments" >
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="ENABLED" property="enabled" jdbcType="CHAR" />
+    <result column="TIMED" property="timed" jdbcType="CHAR" />
+  </resultMap>
+  <insert id="insert" parameterType="com.learn.chapter05.domain.SetupInstruments" >
+    insert into setup_instruments (`NAME`, ENABLED, TIMED
+      )
+    values (#{name,jdbcType=VARCHAR}, #{enabled,jdbcType=CHAR}, #{timed,jdbcType=CHAR}
+      )
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select `NAME`, ENABLED, TIMED
+    from setup_instruments
+  </select>
+</mapper>

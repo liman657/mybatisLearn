@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.learn.chapter05.dao.InnodbSysColumnsMapper" >
+  <resultMap id="BaseResultMap" type="com.learn.chapter05.domain.InnodbSysColumns" >
+    <result column="TABLE_ID" property="tableId" jdbcType="BIGINT" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="POS" property="pos" jdbcType="BIGINT" />
+    <result column="MTYPE" property="mtype" jdbcType="INTEGER" />
+    <result column="PRTYPE" property="prtype" jdbcType="INTEGER" />
+    <result column="LEN" property="len" jdbcType="INTEGER" />
+  </resultMap>
+  <insert id="insert" parameterType="com.learn.chapter05.domain.InnodbSysColumns" >
+    insert into INNODB_SYS_COLUMNS (TABLE_ID, `NAME`, POS, 
+      MTYPE, PRTYPE, LEN)
+    values (#{tableId,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{pos,jdbcType=BIGINT}, 
+      #{mtype,jdbcType=INTEGER}, #{prtype,jdbcType=INTEGER}, #{len,jdbcType=INTEGER})
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select TABLE_ID, `NAME`, POS, MTYPE, PRTYPE, LEN
+    from INNODB_SYS_COLUMNS
+  </select>
+</mapper>

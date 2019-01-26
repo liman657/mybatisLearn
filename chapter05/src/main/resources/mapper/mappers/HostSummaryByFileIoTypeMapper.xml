@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.learn.chapter05.dao.HostSummaryByFileIoTypeMapper" >
+  <resultMap id="BaseResultMap" type="com.learn.chapter05.domain.HostSummaryByFileIoType" >
+    <result column="host" property="host" jdbcType="VARCHAR" />
+    <result column="event_name" property="eventName" jdbcType="VARCHAR" />
+    <result column="total" property="total" jdbcType="BIGINT" />
+    <result column="total_latency" property="totalLatency" jdbcType="LONGVARCHAR" />
+    <result column="max_latency" property="maxLatency" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <insert id="insert" parameterType="com.learn.chapter05.domain.HostSummaryByFileIoType" >
+    insert into host_summary_by_file_io_type (`host`, event_name, total, 
+      total_latency, max_latency)
+    values (#{host,jdbcType=VARCHAR}, #{eventName,jdbcType=VARCHAR}, #{total,jdbcType=BIGINT}, 
+      #{totalLatency,jdbcType=LONGVARCHAR}, #{maxLatency,jdbcType=LONGVARCHAR})
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select `host`, event_name, total, total_latency, max_latency
+    from host_summary_by_file_io_type
+  </select>
+</mapper>

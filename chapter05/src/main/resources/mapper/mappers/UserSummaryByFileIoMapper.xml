@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.learn.chapter05.dao.UserSummaryByFileIoMapper" >
+  <resultMap id="BaseResultMap" type="com.learn.chapter05.domain.UserSummaryByFileIo" >
+    <result column="user" property="user" jdbcType="VARCHAR" />
+    <result column="ios" property="ios" jdbcType="DECIMAL" />
+    <result column="io_latency" property="ioLatency" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <insert id="insert" parameterType="com.learn.chapter05.domain.UserSummaryByFileIo" >
+    insert into user_summary_by_file_io (`user`, ios, io_latency
+      )
+    values (#{user,jdbcType=VARCHAR}, #{ios,jdbcType=DECIMAL}, #{ioLatency,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select `user`, ios, io_latency
+    from user_summary_by_file_io
+  </select>
+</mapper>

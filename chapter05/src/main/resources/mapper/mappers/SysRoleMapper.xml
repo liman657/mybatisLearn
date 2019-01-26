@@ -1,12 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.learn.chapter05.dao.SysRoleMapper">
+  <resultMap id="BaseResultMap" type="com.learn.chapter05.domain.SysRole">
+    <result column="id" jdbcType="BIGINT" property="id" />
+    <result column="role_name" jdbcType="VARCHAR" property="roleName" />
+    <result column="enabled" jdbcType="INTEGER" property="enabled" />
+    <result column="create_by" jdbcType="BIGINT" property="createBy" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <insert id="insert" parameterType="com.learn.chapter05.domain.SysRole">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sys_role (role_name, enabled, create_by, 
+      create_time)
+    values (#{roleName,jdbcType=VARCHAR}, #{enabled,jdbcType=INTEGER}, #{createBy,jdbcType=BIGINT}, 
+      #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, role_name, enabled, create_by, create_time
+    from sys_role
+  </select>
     <resultMap id="BaseResultMap" type="com.learn.chapter05.domain.SysRole">
-        <id column="id" jdbcType="BIGINT" property="id"/>
-        <result column="role_name" jdbcType="VARCHAR" property="roleName"/>
-        <result column="enabled" jdbcType="INTEGER" property="enabled"/>
-        <result column="create_by" jdbcType="BIGINT" property="createBy"/>
-        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <id column="id" jdbcType="BIGINT" property="id" />
+        <result column="role_name" jdbcType="VARCHAR" property="roleName" />
+        <result column="enabled" jdbcType="INTEGER" property="enabled" />
+        <result column="create_by" jdbcType="BIGINT" property="createBy" />
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     </resultMap>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
         delete from sys_role

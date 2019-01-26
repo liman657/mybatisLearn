@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.learn.chapter05.dao.WaitClassesGlobalByLatencyMapper" >
+  <resultMap id="BaseResultMap" type="com.learn.chapter05.domain.WaitClassesGlobalByLatency" >
+    <result column="event_class" property="eventClass" jdbcType="VARCHAR" />
+    <result column="total" property="total" jdbcType="DECIMAL" />
+    <result column="total_latency" property="totalLatency" jdbcType="LONGVARCHAR" />
+    <result column="min_latency" property="minLatency" jdbcType="LONGVARCHAR" />
+    <result column="avg_latency" property="avgLatency" jdbcType="LONGVARCHAR" />
+    <result column="max_latency" property="maxLatency" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <insert id="insert" parameterType="com.learn.chapter05.domain.WaitClassesGlobalByLatency" >
+    insert into wait_classes_global_by_latency (event_class, total, total_latency, 
+      min_latency, avg_latency, max_latency
+      )
+    values (#{eventClass,jdbcType=VARCHAR}, #{total,jdbcType=DECIMAL}, #{totalLatency,jdbcType=LONGVARCHAR}, 
+      #{minLatency,jdbcType=LONGVARCHAR}, #{avgLatency,jdbcType=LONGVARCHAR}, #{maxLatency,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select event_class, total, total_latency, min_latency, avg_latency, max_latency
+    from wait_classes_global_by_latency
+  </select>
+</mapper>

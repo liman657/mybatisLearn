@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.learn.chapter05.dao.RwlockInstancesMapper" >
+  <resultMap id="BaseResultMap" type="com.learn.chapter05.domain.RwlockInstances" >
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="OBJECT_INSTANCE_BEGIN" property="objectInstanceBegin" jdbcType="BIGINT" />
+    <result column="WRITE_LOCKED_BY_THREAD_ID" property="writeLockedByThreadId" jdbcType="BIGINT" />
+    <result column="READ_LOCKED_BY_COUNT" property="readLockedByCount" jdbcType="INTEGER" />
+  </resultMap>
+  <insert id="insert" parameterType="com.learn.chapter05.domain.RwlockInstances" >
+    insert into rwlock_instances (`NAME`, OBJECT_INSTANCE_BEGIN, WRITE_LOCKED_BY_THREAD_ID, 
+      READ_LOCKED_BY_COUNT)
+    values (#{name,jdbcType=VARCHAR}, #{objectInstanceBegin,jdbcType=BIGINT}, #{writeLockedByThreadId,jdbcType=BIGINT}, 
+      #{readLockedByCount,jdbcType=INTEGER})
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select `NAME`, OBJECT_INSTANCE_BEGIN, WRITE_LOCKED_BY_THREAD_ID, READ_LOCKED_BY_COUNT
+    from rwlock_instances
+  </select>
+</mapper>

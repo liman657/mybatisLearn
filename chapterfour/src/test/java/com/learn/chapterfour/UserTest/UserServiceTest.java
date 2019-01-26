@@ -8,9 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * autor:liman
@@ -100,5 +98,14 @@ public class UserServiceTest {
             users.add(sysUser);
         }
         userService.insertUsers(users);
+    }
+
+    @Test
+    public void testUpdateUsers(){
+        Map<String,Object> params = new HashMap<>();
+        params.put("id",1L);
+        params.put("user_email","admin@testUpdate.com");
+        int i = userService.updateUser(params);
+        System.out.println(i);
     }
 }

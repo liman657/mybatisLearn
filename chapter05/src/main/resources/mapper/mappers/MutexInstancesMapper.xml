@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.learn.chapter05.dao.MutexInstancesMapper" >
+  <resultMap id="BaseResultMap" type="com.learn.chapter05.domain.MutexInstances" >
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="OBJECT_INSTANCE_BEGIN" property="objectInstanceBegin" jdbcType="BIGINT" />
+    <result column="LOCKED_BY_THREAD_ID" property="lockedByThreadId" jdbcType="BIGINT" />
+  </resultMap>
+  <insert id="insert" parameterType="com.learn.chapter05.domain.MutexInstances" >
+    insert into mutex_instances (`NAME`, OBJECT_INSTANCE_BEGIN, LOCKED_BY_THREAD_ID
+      )
+    values (#{name,jdbcType=VARCHAR}, #{objectInstanceBegin,jdbcType=BIGINT}, #{lockedByThreadId,jdbcType=BIGINT}
+      )
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select `NAME`, OBJECT_INSTANCE_BEGIN, LOCKED_BY_THREAD_ID
+    from mutex_instances
+  </select>
+</mapper>

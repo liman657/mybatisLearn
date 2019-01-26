@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.learn.chapter05.dao.OptimizerTraceMapper" >
+  <resultMap id="BaseResultMap" type="com.learn.chapter05.domain.OptimizerTrace" >
+    <result column="MISSING_BYTES_BEYOND_MAX_MEM_SIZE" property="missingBytesBeyondMaxMemSize" jdbcType="INTEGER" />
+    <result column="INSUFFICIENT_PRIVILEGES" property="insufficientPrivileges" jdbcType="BIT" />
+    <result column="QUERY" property="query" jdbcType="LONGVARCHAR" />
+    <result column="TRACE" property="trace" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <insert id="insert" parameterType="com.learn.chapter05.domain.OptimizerTrace" >
+    insert into OPTIMIZER_TRACE (MISSING_BYTES_BEYOND_MAX_MEM_SIZE, INSUFFICIENT_PRIVILEGES, 
+      QUERY, TRACE)
+    values (#{missingBytesBeyondMaxMemSize,jdbcType=INTEGER}, #{insufficientPrivileges,jdbcType=BIT}, 
+      #{query,jdbcType=LONGVARCHAR}, #{trace,jdbcType=LONGVARCHAR})
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select MISSING_BYTES_BEYOND_MAX_MEM_SIZE, INSUFFICIENT_PRIVILEGES, QUERY, TRACE
+    from OPTIMIZER_TRACE
+  </select>
+</mapper>

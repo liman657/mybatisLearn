@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.learn.chapter05.dao.TimeZoneNameMapper" >
+  <resultMap id="BaseResultMap" type="com.learn.chapter05.domain.TimeZoneName" >
+    <result column="Name" property="name" jdbcType="CHAR" />
+    <result column="Time_zone_id" property="timeZoneId" jdbcType="INTEGER" />
+  </resultMap>
+  <insert id="insert" parameterType="com.learn.chapter05.domain.TimeZoneName" >
+    insert into time_zone_name (`Name`, Time_zone_id)
+    values (#{name,jdbcType=CHAR}, #{timeZoneId,jdbcType=INTEGER})
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select `Name`, Time_zone_id
+    from time_zone_name
+  </select>
+</mapper>

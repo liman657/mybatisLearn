@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.learn.chapter05.dao.IoGlobalByWaitByBytesMapper" >
+  <resultMap id="BaseResultMap" type="com.learn.chapter05.domain.IoGlobalByWaitByBytes" >
+    <result column="event_name" property="eventName" jdbcType="VARCHAR" />
+    <result column="total" property="total" jdbcType="BIGINT" />
+    <result column="count_read" property="countRead" jdbcType="BIGINT" />
+    <result column="count_write" property="countWrite" jdbcType="BIGINT" />
+    <result column="total_latency" property="totalLatency" jdbcType="LONGVARCHAR" />
+    <result column="min_latency" property="minLatency" jdbcType="LONGVARCHAR" />
+    <result column="avg_latency" property="avgLatency" jdbcType="LONGVARCHAR" />
+    <result column="max_latency" property="maxLatency" jdbcType="LONGVARCHAR" />
+    <result column="total_read" property="totalRead" jdbcType="LONGVARCHAR" />
+    <result column="avg_read" property="avgRead" jdbcType="LONGVARCHAR" />
+    <result column="total_written" property="totalWritten" jdbcType="LONGVARCHAR" />
+    <result column="avg_written" property="avgWritten" jdbcType="LONGVARCHAR" />
+    <result column="total_requested" property="totalRequested" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <insert id="insert" parameterType="com.learn.chapter05.domain.IoGlobalByWaitByBytes" >
+    insert into io_global_by_wait_by_bytes (event_name, total, count_read, 
+      count_write, total_latency, min_latency, 
+      avg_latency, max_latency, total_read, 
+      avg_read, total_written, avg_written, 
+      total_requested)
+    values (#{eventName,jdbcType=VARCHAR}, #{total,jdbcType=BIGINT}, #{countRead,jdbcType=BIGINT}, 
+      #{countWrite,jdbcType=BIGINT}, #{totalLatency,jdbcType=LONGVARCHAR}, #{minLatency,jdbcType=LONGVARCHAR}, 
+      #{avgLatency,jdbcType=LONGVARCHAR}, #{maxLatency,jdbcType=LONGVARCHAR}, #{totalRead,jdbcType=LONGVARCHAR}, 
+      #{avgRead,jdbcType=LONGVARCHAR}, #{totalWritten,jdbcType=LONGVARCHAR}, #{avgWritten,jdbcType=LONGVARCHAR}, 
+      #{totalRequested,jdbcType=LONGVARCHAR})
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select event_name, total, count_read, count_write, total_latency, min_latency, avg_latency, 
+    max_latency, total_read, avg_read, total_written, avg_written, total_requested
+    from io_global_by_wait_by_bytes
+  </select>
+</mapper>

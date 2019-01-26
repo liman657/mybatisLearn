@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.learn.chapter05.dao.IoByThreadByLatencyMapper" >
+  <resultMap id="BaseResultMap" type="com.learn.chapter05.domain.IoByThreadByLatency" >
+    <result column="user" property="user" jdbcType="VARCHAR" />
+    <result column="total" property="total" jdbcType="DECIMAL" />
+    <result column="thread_id" property="threadId" jdbcType="BIGINT" />
+    <result column="processlist_id" property="processlistId" jdbcType="BIGINT" />
+    <result column="total_latency" property="totalLatency" jdbcType="LONGVARCHAR" />
+    <result column="min_latency" property="minLatency" jdbcType="LONGVARCHAR" />
+    <result column="avg_latency" property="avgLatency" jdbcType="LONGVARCHAR" />
+    <result column="max_latency" property="maxLatency" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <insert id="insert" parameterType="com.learn.chapter05.domain.IoByThreadByLatency" >
+    insert into io_by_thread_by_latency (`user`, total, thread_id, 
+      processlist_id, total_latency, min_latency, 
+      avg_latency, max_latency)
+    values (#{user,jdbcType=VARCHAR}, #{total,jdbcType=DECIMAL}, #{threadId,jdbcType=BIGINT}, 
+      #{processlistId,jdbcType=BIGINT}, #{totalLatency,jdbcType=LONGVARCHAR}, #{minLatency,jdbcType=LONGVARCHAR}, 
+      #{avgLatency,jdbcType=LONGVARCHAR}, #{maxLatency,jdbcType=LONGVARCHAR})
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select `user`, total, thread_id, processlist_id, total_latency, min_latency, avg_latency, 
+    max_latency
+    from io_by_thread_by_latency
+  </select>
+</mapper>

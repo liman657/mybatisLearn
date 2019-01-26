@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.learn.chapter05.dao.IoGlobalByFileByLatencyMapper" >
+  <resultMap id="BaseResultMap" type="com.learn.chapter05.domain.IoGlobalByFileByLatency" >
+    <result column="file" property="file" jdbcType="VARCHAR" />
+    <result column="total" property="total" jdbcType="BIGINT" />
+    <result column="count_read" property="countRead" jdbcType="BIGINT" />
+    <result column="count_write" property="countWrite" jdbcType="BIGINT" />
+    <result column="count_misc" property="countMisc" jdbcType="BIGINT" />
+    <result column="total_latency" property="totalLatency" jdbcType="LONGVARCHAR" />
+    <result column="read_latency" property="readLatency" jdbcType="LONGVARCHAR" />
+    <result column="write_latency" property="writeLatency" jdbcType="LONGVARCHAR" />
+    <result column="misc_latency" property="miscLatency" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <insert id="insert" parameterType="com.learn.chapter05.domain.IoGlobalByFileByLatency" >
+    insert into io_global_by_file_by_latency (`file`, total, count_read, 
+      count_write, count_misc, total_latency, 
+      read_latency, write_latency, misc_latency
+      )
+    values (#{file,jdbcType=VARCHAR}, #{total,jdbcType=BIGINT}, #{countRead,jdbcType=BIGINT}, 
+      #{countWrite,jdbcType=BIGINT}, #{countMisc,jdbcType=BIGINT}, #{totalLatency,jdbcType=LONGVARCHAR}, 
+      #{readLatency,jdbcType=LONGVARCHAR}, #{writeLatency,jdbcType=LONGVARCHAR}, #{miscLatency,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select `file`, total, count_read, count_write, count_misc, total_latency, read_latency, 
+    write_latency, misc_latency
+    from io_global_by_file_by_latency
+  </select>
+</mapper>

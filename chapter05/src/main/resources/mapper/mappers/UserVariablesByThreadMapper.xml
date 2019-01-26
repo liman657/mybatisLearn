@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.learn.chapter05.dao.UserVariablesByThreadMapper" >
+  <resultMap id="BaseResultMap" type="com.learn.chapter05.domain.UserVariablesByThread" >
+    <result column="THREAD_ID" property="threadId" jdbcType="BIGINT" />
+    <result column="VARIABLE_NAME" property="variableName" jdbcType="VARCHAR" />
+    <result column="VARIABLE_VALUE" property="variableValue" jdbcType="LONGVARBINARY" />
+  </resultMap>
+  <insert id="insert" parameterType="com.learn.chapter05.domain.UserVariablesByThread" >
+    insert into user_variables_by_thread (THREAD_ID, VARIABLE_NAME, VARIABLE_VALUE
+      )
+    values (#{threadId,jdbcType=BIGINT}, #{variableName,jdbcType=VARCHAR}, #{variableValue,jdbcType=LONGVARBINARY}
+      )
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select THREAD_ID, VARIABLE_NAME, VARIABLE_VALUE
+    from user_variables_by_thread
+  </select>
+</mapper>

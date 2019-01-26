@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.learn.chapter05.dao.InnodbSysTablespacesMapper" >
+  <resultMap id="BaseResultMap" type="com.learn.chapter05.domain.InnodbSysTablespaces" >
+    <result column="SPACE" property="space" jdbcType="INTEGER" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="FLAG" property="flag" jdbcType="INTEGER" />
+    <result column="FILE_FORMAT" property="fileFormat" jdbcType="VARCHAR" />
+    <result column="ROW_FORMAT" property="rowFormat" jdbcType="VARCHAR" />
+    <result column="PAGE_SIZE" property="pageSize" jdbcType="INTEGER" />
+    <result column="ZIP_PAGE_SIZE" property="zipPageSize" jdbcType="INTEGER" />
+    <result column="SPACE_TYPE" property="spaceType" jdbcType="VARCHAR" />
+    <result column="FS_BLOCK_SIZE" property="fsBlockSize" jdbcType="INTEGER" />
+    <result column="FILE_SIZE" property="fileSize" jdbcType="BIGINT" />
+    <result column="ALLOCATED_SIZE" property="allocatedSize" jdbcType="BIGINT" />
+  </resultMap>
+  <insert id="insert" parameterType="com.learn.chapter05.domain.InnodbSysTablespaces" >
+    insert into INNODB_SYS_TABLESPACES (`SPACE`, `NAME`, FLAG, 
+      FILE_FORMAT, ROW_FORMAT, PAGE_SIZE, 
+      ZIP_PAGE_SIZE, SPACE_TYPE, FS_BLOCK_SIZE, 
+      FILE_SIZE, ALLOCATED_SIZE)
+    values (#{space,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{flag,jdbcType=INTEGER}, 
+      #{fileFormat,jdbcType=VARCHAR}, #{rowFormat,jdbcType=VARCHAR}, #{pageSize,jdbcType=INTEGER}, 
+      #{zipPageSize,jdbcType=INTEGER}, #{spaceType,jdbcType=VARCHAR}, #{fsBlockSize,jdbcType=INTEGER}, 
+      #{fileSize,jdbcType=BIGINT}, #{allocatedSize,jdbcType=BIGINT})
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select `SPACE`, `NAME`, FLAG, FILE_FORMAT, ROW_FORMAT, PAGE_SIZE, ZIP_PAGE_SIZE, 
+    SPACE_TYPE, FS_BLOCK_SIZE, FILE_SIZE, ALLOCATED_SIZE
+    from INNODB_SYS_TABLESPACES
+  </select>
+</mapper>

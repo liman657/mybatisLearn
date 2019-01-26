@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.learn.chapter05.dao.MemoryByThreadByCurrentBytesMapper" >
+  <resultMap id="BaseResultMap" type="com.learn.chapter05.domain.MemoryByThreadByCurrentBytes" >
+    <result column="thread_id" property="threadId" jdbcType="BIGINT" />
+    <result column="user" property="user" jdbcType="VARCHAR" />
+    <result column="current_count_used" property="currentCountUsed" jdbcType="DECIMAL" />
+    <result column="current_allocated" property="currentAllocated" jdbcType="LONGVARCHAR" />
+    <result column="current_avg_alloc" property="currentAvgAlloc" jdbcType="LONGVARCHAR" />
+    <result column="current_max_alloc" property="currentMaxAlloc" jdbcType="LONGVARCHAR" />
+    <result column="total_allocated" property="totalAllocated" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <insert id="insert" parameterType="com.learn.chapter05.domain.MemoryByThreadByCurrentBytes" >
+    insert into memory_by_thread_by_current_bytes (thread_id, `user`, current_count_used, 
+      current_allocated, current_avg_alloc, 
+      current_max_alloc, total_allocated
+      )
+    values (#{threadId,jdbcType=BIGINT}, #{user,jdbcType=VARCHAR}, #{currentCountUsed,jdbcType=DECIMAL}, 
+      #{currentAllocated,jdbcType=LONGVARCHAR}, #{currentAvgAlloc,jdbcType=LONGVARCHAR}, 
+      #{currentMaxAlloc,jdbcType=LONGVARCHAR}, #{totalAllocated,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select thread_id, `user`, current_count_used, current_allocated, current_avg_alloc, 
+    current_max_alloc, total_allocated
+    from memory_by_thread_by_current_bytes
+  </select>
+</mapper>

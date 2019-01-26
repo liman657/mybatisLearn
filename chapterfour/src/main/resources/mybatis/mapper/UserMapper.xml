@@ -57,10 +57,17 @@
     </update>
 
     <insert id="insertSysUserDynamicSQL" useGeneratedKeys="true" keyProperty="id">
-        insert into sys_user(user_name,user_password,
-        <if test="userEmail != null and userEmail != ''">user_email,</if>
-        user_info,head_img,create_time) values (#{userName},#{userPassword},
-        <if test="userEmail != null and userEmail !=''">#{userEmail},</if>
+        insert into
+        sys_user(
+        user_name,user_password,
+        <if test="userEmail != null and userEmail != ''">
+            user_email,
+        </if>
+        user_info,head_img,create_time)
+        values (#{userName},#{userPassword},
+        <if test="userEmail != null and userEmail !=''">
+            #{userEmail},
+        </if>
         #{userInfo},#{headImg,jdbcType = BLOB},
         #{createTime,jdbcType=TIMESTAMP}
         )
@@ -147,10 +154,10 @@
     </insert>
 
     <!--foreach实现动态update  暂时没加入实例-->
-    <update id="updateUsers">
+    <update id="updateUser">
         update sys_user
         set
-        <foreach collection="values" item="val" index="key" separator=",">
+        <foreach collection="_parameter" item="val" index="key" separator=",">
             ${key} = #{val}
         </foreach>
         where id = #{id}

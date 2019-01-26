@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.learn.chapter05.dao.ReplicationApplierStatusByCoordinatorMapper" >
+  <resultMap id="BaseResultMap" type="com.learn.chapter05.domain.ReplicationApplierStatusByCoordinator" >
+    <result column="CHANNEL_NAME" property="channelName" jdbcType="CHAR" />
+    <result column="THREAD_ID" property="threadId" jdbcType="BIGINT" />
+    <result column="SERVICE_STATE" property="serviceState" jdbcType="CHAR" />
+    <result column="LAST_ERROR_NUMBER" property="lastErrorNumber" jdbcType="INTEGER" />
+    <result column="LAST_ERROR_MESSAGE" property="lastErrorMessage" jdbcType="VARCHAR" />
+    <result column="LAST_ERROR_TIMESTAMP" property="lastErrorTimestamp" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <insert id="insert" parameterType="com.learn.chapter05.domain.ReplicationApplierStatusByCoordinator" >
+    insert into replication_applier_status_by_coordinator (CHANNEL_NAME, THREAD_ID, SERVICE_STATE, 
+      LAST_ERROR_NUMBER, LAST_ERROR_MESSAGE, LAST_ERROR_TIMESTAMP
+      )
+    values (#{channelName,jdbcType=CHAR}, #{threadId,jdbcType=BIGINT}, #{serviceState,jdbcType=CHAR}, 
+      #{lastErrorNumber,jdbcType=INTEGER}, #{lastErrorMessage,jdbcType=VARCHAR}, #{lastErrorTimestamp,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select CHANNEL_NAME, THREAD_ID, SERVICE_STATE, LAST_ERROR_NUMBER, LAST_ERROR_MESSAGE, 
+    LAST_ERROR_TIMESTAMP
+    from replication_applier_status_by_coordinator
+  </select>
+</mapper>

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -56,5 +57,9 @@ public class UserService {
 
     public int insertUsers(List<SysUser> users){
         return userMapper.insertUsers(users);
+    }
+
+    public int updateUser(Map<String,Object> params){
+        return userMapper.updateUser(params);
     }
 }

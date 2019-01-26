@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.learn.chapter05.dao.ProcMapper" >
+  <resultMap id="BaseResultMap" type="com.learn.chapter05.domain.Proc" >
+    <result column="db" property="db" jdbcType="CHAR" />
+    <result column="name" property="name" jdbcType="CHAR" />
+    <result column="type" property="type" jdbcType="CHAR" />
+    <result column="specific_name" property="specificName" jdbcType="CHAR" />
+    <result column="language" property="language" jdbcType="CHAR" />
+    <result column="sql_data_access" property="sqlDataAccess" jdbcType="CHAR" />
+    <result column="is_deterministic" property="isDeterministic" jdbcType="CHAR" />
+    <result column="security_type" property="securityType" jdbcType="CHAR" />
+    <result column="definer" property="definer" jdbcType="CHAR" />
+    <result column="created" property="created" jdbcType="TIMESTAMP" />
+    <result column="modified" property="modified" jdbcType="TIMESTAMP" />
+    <result column="sql_mode" property="sqlMode" jdbcType="CHAR" />
+    <result column="character_set_client" property="characterSetClient" jdbcType="CHAR" />
+    <result column="collation_connection" property="collationConnection" jdbcType="CHAR" />
+    <result column="db_collation" property="dbCollation" jdbcType="CHAR" />
+    <result column="param_list" property="paramList" jdbcType="LONGVARBINARY" />
+    <result column="returns" property="returns" jdbcType="LONGVARBINARY" />
+    <result column="body" property="body" jdbcType="LONGVARBINARY" />
+    <result column="comment" property="comment" jdbcType="LONGVARCHAR" />
+    <result column="body_utf8" property="bodyUtf8" jdbcType="LONGVARBINARY" />
+  </resultMap>
+  <insert id="insert" parameterType="com.learn.chapter05.domain.Proc" >
+    insert into proc (db, `name`, `type`, `specific_name`, 
+      `language`, sql_data_access, is_deterministic, 
+      security_type, `definer`, created, 
+      modified, sql_mode, character_set_client, 
+      collation_connection, db_collation, param_list, 
+      `returns`, body, `comment`, 
+      body_utf8)
+    values (#{db,jdbcType=CHAR}, #{name,jdbcType=CHAR}, #{type,jdbcType=CHAR}, #{specificName,jdbcType=CHAR}, 
+      #{language,jdbcType=CHAR}, #{sqlDataAccess,jdbcType=CHAR}, #{isDeterministic,jdbcType=CHAR}, 
+      #{securityType,jdbcType=CHAR}, #{definer,jdbcType=CHAR}, #{created,jdbcType=TIMESTAMP}, 
+      #{modified,jdbcType=TIMESTAMP}, #{sqlMode,jdbcType=CHAR}, #{characterSetClient,jdbcType=CHAR}, 
+      #{collationConnection,jdbcType=CHAR}, #{dbCollation,jdbcType=CHAR}, #{paramList,jdbcType=LONGVARBINARY}, 
+      #{returns,jdbcType=LONGVARBINARY}, #{body,jdbcType=LONGVARBINARY}, #{comment,jdbcType=LONGVARCHAR}, 
+      #{bodyUtf8,jdbcType=LONGVARBINARY})
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select db, `name`, `type`, `specific_name`, `language`, sql_data_access, is_deterministic, 
+    security_type, `definer`, created, modified, sql_mode, character_set_client, collation_connection, 
+    db_collation, param_list, `returns`, body, `comment`, body_utf8
+    from proc
+  </select>
+</mapper>

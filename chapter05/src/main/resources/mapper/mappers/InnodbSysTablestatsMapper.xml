@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.learn.chapter05.dao.InnodbSysTablestatsMapper" >
+  <resultMap id="BaseResultMap" type="com.learn.chapter05.domain.InnodbSysTablestats" >
+    <result column="TABLE_ID" property="tableId" jdbcType="BIGINT" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="STATS_INITIALIZED" property="statsInitialized" jdbcType="VARCHAR" />
+    <result column="NUM_ROWS" property="numRows" jdbcType="BIGINT" />
+    <result column="CLUST_INDEX_SIZE" property="clustIndexSize" jdbcType="BIGINT" />
+    <result column="OTHER_INDEX_SIZE" property="otherIndexSize" jdbcType="BIGINT" />
+    <result column="MODIFIED_COUNTER" property="modifiedCounter" jdbcType="BIGINT" />
+    <result column="AUTOINC" property="autoinc" jdbcType="BIGINT" />
+    <result column="REF_COUNT" property="refCount" jdbcType="INTEGER" />
+  </resultMap>
+  <insert id="insert" parameterType="com.learn.chapter05.domain.InnodbSysTablestats" >
+    insert into INNODB_SYS_TABLESTATS (TABLE_ID, `NAME`, STATS_INITIALIZED, 
+      NUM_ROWS, CLUST_INDEX_SIZE, OTHER_INDEX_SIZE, 
+      MODIFIED_COUNTER, AUTOINC, REF_COUNT
+      )
+    values (#{tableId,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{statsInitialized,jdbcType=VARCHAR}, 
+      #{numRows,jdbcType=BIGINT}, #{clustIndexSize,jdbcType=BIGINT}, #{otherIndexSize,jdbcType=BIGINT}, 
+      #{modifiedCounter,jdbcType=BIGINT}, #{autoinc,jdbcType=BIGINT}, #{refCount,jdbcType=INTEGER}
+      )
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select TABLE_ID, `NAME`, STATS_INITIALIZED, NUM_ROWS, CLUST_INDEX_SIZE, OTHER_INDEX_SIZE, 
+    MODIFIED_COUNTER, AUTOINC, REF_COUNT
+    from INNODB_SYS_TABLESTATS
+  </select>
+</mapper>

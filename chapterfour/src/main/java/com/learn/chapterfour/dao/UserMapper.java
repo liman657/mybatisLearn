@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * autor:liman
@@ -33,4 +34,6 @@ public interface UserMapper {
     public List<SysUser> selectByIdList(@Param("ids") Long[] ids);
 
     public int insertUsers(@Param("users") List<SysUser> users);
+
+    public int updateUser(Map<String,Object> userValues);
 }

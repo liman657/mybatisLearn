@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.learn.chapter05.dao.SchemaTableStatisticsWithBufferMapper" >
+  <resultMap id="BaseResultMap" type="com.learn.chapter05.domain.SchemaTableStatisticsWithBuffer" >
+    <result column="table_schema" property="tableSchema" jdbcType="VARCHAR" />
+    <result column="table_name" property="tableName" jdbcType="VARCHAR" />
+    <result column="rows_fetched" property="rowsFetched" jdbcType="BIGINT" />
+    <result column="rows_inserted" property="rowsInserted" jdbcType="BIGINT" />
+    <result column="rows_updated" property="rowsUpdated" jdbcType="BIGINT" />
+    <result column="rows_deleted" property="rowsDeleted" jdbcType="BIGINT" />
+    <result column="io_read_requests" property="ioReadRequests" jdbcType="DECIMAL" />
+    <result column="io_write_requests" property="ioWriteRequests" jdbcType="DECIMAL" />
+    <result column="io_misc_requests" property="ioMiscRequests" jdbcType="DECIMAL" />
+    <result column="innodb_buffer_pages" property="innodbBufferPages" jdbcType="BIGINT" />
+    <result column="innodb_buffer_pages_hashed" property="innodbBufferPagesHashed" jdbcType="BIGINT" />
+    <result column="innodb_buffer_pages_old" property="innodbBufferPagesOld" jdbcType="BIGINT" />
+    <result column="innodb_buffer_rows_cached" property="innodbBufferRowsCached" jdbcType="DECIMAL" />
+    <result column="fetch_latency" property="fetchLatency" jdbcType="LONGVARCHAR" />
+    <result column="insert_latency" property="insertLatency" jdbcType="LONGVARCHAR" />
+    <result column="update_latency" property="updateLatency" jdbcType="LONGVARCHAR" />
+    <result column="delete_latency" property="deleteLatency" jdbcType="LONGVARCHAR" />
+    <result column="io_read" property="ioRead" jdbcType="LONGVARCHAR" />
+    <result column="io_read_latency" property="ioReadLatency" jdbcType="LONGVARCHAR" />
+    <result column="io_write" property="ioWrite" jdbcType="LONGVARCHAR" />
+    <result column="io_write_latency" property="ioWriteLatency" jdbcType="LONGVARCHAR" />
+    <result column="io_misc_latency" property="ioMiscLatency" jdbcType="LONGVARCHAR" />
+    <result column="innodb_buffer_allocated" property="innodbBufferAllocated" jdbcType="LONGVARCHAR" />
+    <result column="innodb_buffer_data" property="innodbBufferData" jdbcType="LONGVARCHAR" />
+    <result column="innodb_buffer_free" property="innodbBufferFree" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <insert id="insert" parameterType="com.learn.chapter05.domain.SchemaTableStatisticsWithBuffer" >
+    insert into schema_table_statistics_with_buffer (table_schema, `table_name`, rows_fetched, 
+      rows_inserted, rows_updated, rows_deleted, 
+      io_read_requests, io_write_requests, io_misc_requests, 
+      innodb_buffer_pages, innodb_buffer_pages_hashed, 
+      innodb_buffer_pages_old, innodb_buffer_rows_cached, 
+      fetch_latency, insert_latency, update_latency, 
+      delete_latency, io_read, io_read_latency, 
+      io_write, io_write_latency, io_misc_latency, 
+      innodb_buffer_allocated, innodb_buffer_data, 
+      innodb_buffer_free)
+    values (#{tableSchema,jdbcType=VARCHAR}, #{tableName,jdbcType=VARCHAR}, #{rowsFetched,jdbcType=BIGINT}, 
+      #{rowsInserted,jdbcType=BIGINT}, #{rowsUpdated,jdbcType=BIGINT}, #{rowsDeleted,jdbcType=BIGINT}, 
+      #{ioReadRequests,jdbcType=DECIMAL}, #{ioWriteRequests,jdbcType=DECIMAL}, #{ioMiscRequests,jdbcType=DECIMAL}, 
+      #{innodbBufferPages,jdbcType=BIGINT}, #{innodbBufferPagesHashed,jdbcType=BIGINT}, 
+      #{innodbBufferPagesOld,jdbcType=BIGINT}, #{innodbBufferRowsCached,jdbcType=DECIMAL}, 
+      #{fetchLatency,jdbcType=LONGVARCHAR}, #{insertLatency,jdbcType=LONGVARCHAR}, #{updateLatency,jdbcType=LONGVARCHAR}, 
+      #{deleteLatency,jdbcType=LONGVARCHAR}, #{ioRead,jdbcType=LONGVARCHAR}, #{ioReadLatency,jdbcType=LONGVARCHAR}, 
+      #{ioWrite,jdbcType=LONGVARCHAR}, #{ioWriteLatency,jdbcType=LONGVARCHAR}, #{ioMiscLatency,jdbcType=LONGVARCHAR}, 
+      #{innodbBufferAllocated,jdbcType=LONGVARCHAR}, #{innodbBufferData,jdbcType=LONGVARCHAR}, 
+      #{innodbBufferFree,jdbcType=LONGVARCHAR})
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select table_schema, `table_name`, rows_fetched, rows_inserted, rows_updated, rows_deleted, 
+    io_read_requests, io_write_requests, io_misc_requests, innodb_buffer_pages, innodb_buffer_pages_hashed, 
+    innodb_buffer_pages_old, innodb_buffer_rows_cached, fetch_latency, insert_latency, 
+    update_latency, delete_latency, io_read, io_read_latency, io_write, io_write_latency, 
+    io_misc_latency, innodb_buffer_allocated, innodb_buffer_data, innodb_buffer_free
+    from schema_table_statistics_with_buffer
+  </select>
+</mapper>

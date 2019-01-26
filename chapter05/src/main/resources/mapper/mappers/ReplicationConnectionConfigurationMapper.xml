@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.learn.chapter05.dao.ReplicationConnectionConfigurationMapper" >
+  <resultMap id="BaseResultMap" type="com.learn.chapter05.domain.ReplicationConnectionConfiguration" >
+    <result column="CHANNEL_NAME" property="channelName" jdbcType="CHAR" />
+    <result column="HOST" property="host" jdbcType="CHAR" />
+    <result column="PORT" property="port" jdbcType="INTEGER" />
+    <result column="USER" property="user" jdbcType="CHAR" />
+    <result column="NETWORK_INTERFACE" property="networkInterface" jdbcType="CHAR" />
+    <result column="AUTO_POSITION" property="autoPosition" jdbcType="CHAR" />
+    <result column="SSL_ALLOWED" property="sslAllowed" jdbcType="CHAR" />
+    <result column="SSL_CA_FILE" property="sslCaFile" jdbcType="VARCHAR" />
+    <result column="SSL_CA_PATH" property="sslCaPath" jdbcType="VARCHAR" />
+    <result column="SSL_CERTIFICATE" property="sslCertificate" jdbcType="VARCHAR" />
+    <result column="SSL_CIPHER" property="sslCipher" jdbcType="VARCHAR" />
+    <result column="SSL_KEY" property="sslKey" jdbcType="VARCHAR" />
+    <result column="SSL_VERIFY_SERVER_CERTIFICATE" property="sslVerifyServerCertificate" jdbcType="CHAR" />
+    <result column="SSL_CRL_FILE" property="sslCrlFile" jdbcType="VARCHAR" />
+    <result column="SSL_CRL_PATH" property="sslCrlPath" jdbcType="VARCHAR" />
+    <result column="CONNECTION_RETRY_INTERVAL" property="connectionRetryInterval" jdbcType="INTEGER" />
+    <result column="CONNECTION_RETRY_COUNT" property="connectionRetryCount" jdbcType="BIGINT" />
+    <result column="HEARTBEAT_INTERVAL" property="heartbeatInterval" jdbcType="DOUBLE" />
+    <result column="TLS_VERSION" property="tlsVersion" jdbcType="VARCHAR" />
+  </resultMap>
+  <insert id="insert" parameterType="com.learn.chapter05.domain.ReplicationConnectionConfiguration" >
+    insert into replication_connection_configuration (CHANNEL_NAME, `HOST`, PORT, 
+      `USER`, NETWORK_INTERFACE, AUTO_POSITION, 
+      SSL_ALLOWED, SSL_CA_FILE, SSL_CA_PATH, 
+      SSL_CERTIFICATE, SSL_CIPHER, SSL_KEY, 
+      SSL_VERIFY_SERVER_CERTIFICATE, SSL_CRL_FILE, SSL_CRL_PATH, 
+      CONNECTION_RETRY_INTERVAL, CONNECTION_RETRY_COUNT, 
+      HEARTBEAT_INTERVAL, TLS_VERSION)
+    values (#{channelName,jdbcType=CHAR}, #{host,jdbcType=CHAR}, #{port,jdbcType=INTEGER}, 
+      #{user,jdbcType=CHAR}, #{networkInterface,jdbcType=CHAR}, #{autoPosition,jdbcType=CHAR}, 
+      #{sslAllowed,jdbcType=CHAR}, #{sslCaFile,jdbcType=VARCHAR}, #{sslCaPath,jdbcType=VARCHAR}, 
+      #{sslCertificate,jdbcType=VARCHAR}, #{sslCipher,jdbcType=VARCHAR}, #{sslKey,jdbcType=VARCHAR}, 
+      #{sslVerifyServerCertificate,jdbcType=CHAR}, #{sslCrlFile,jdbcType=VARCHAR}, #{sslCrlPath,jdbcType=VARCHAR}, 
+      #{connectionRetryInterval,jdbcType=INTEGER}, #{connectionRetryCount,jdbcType=BIGINT}, 
+      #{heartbeatInterval,jdbcType=DOUBLE}, #{tlsVersion,jdbcType=VARCHAR})
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select CHANNEL_NAME, `HOST`, PORT, `USER`, NETWORK_INTERFACE, AUTO_POSITION, SSL_ALLOWED, 
+    SSL_CA_FILE, SSL_CA_PATH, SSL_CERTIFICATE, SSL_CIPHER, SSL_KEY, SSL_VERIFY_SERVER_CERTIFICATE, 
+    SSL_CRL_FILE, SSL_CRL_PATH, CONNECTION_RETRY_INTERVAL, CONNECTION_RETRY_COUNT, HEARTBEAT_INTERVAL, 
+    TLS_VERSION
+    from replication_connection_configuration
+  </select>
+</mapper>

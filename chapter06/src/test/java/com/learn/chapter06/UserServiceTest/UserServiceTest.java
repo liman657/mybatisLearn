@@ -32,6 +32,16 @@ public class UserServiceTest {
     @Test
     public void testSelectUserAndRoleById2(){
         List<SysUser> sysUsers = userService.selectUserAndRoleById2(1L);
+        System.out.println(sysUsers.size());
+        for(SysUser sysUser:sysUsers){
+            System.out.println(sysUser.getSysRole().getRoleName());
+        }
+    }
+
+    @Test
+    public void testSelectUserAndRoleByIdSelect(){
+        List<SysUser> sysUsers = userService.selectUserAndRoleByIdSelect(1L);
+        System.out.println(sysUsers.size());
         for(SysUser sysUser:sysUsers){
             System.out.println(sysUser.getSysRole().getRoleName());
         }
