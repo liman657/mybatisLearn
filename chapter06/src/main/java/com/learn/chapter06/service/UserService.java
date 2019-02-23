@@ -31,4 +31,8 @@ public class UserService {
         return userMapper.selectUserAndRoleByIdSelect(id);
     }
 
+    public List<SysUser> selectUserAndRoleByUserId_userRoleMap(Long id){
+        return userMapper.selectUserAndRoleByUserId_userRoleMap(id);
+    }
+
 }

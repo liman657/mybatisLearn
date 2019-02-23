@@ -46,4 +46,14 @@ public class UserServiceTest {
             System.out.println(sysUser.getSysRole().getRoleName());
         }
     }
+
+    @Test
+    public void testselectUserAndRoleByUserId_userRoleMap(){
+        List<SysUser> sysUsers = userService.selectUserAndRoleByUserId_userRoleMap(1L);
+        System.out.println(sysUsers.size());
+        for(SysUser sysUser:sysUsers){
+            System.out.println(sysUser.getSysRole().getRoleName());
+        }
+    }
+
 }

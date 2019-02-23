@@ -1,8 +1,6 @@
 package com.learn.chapter06.dao;
 
-import com.learn.chapter06.domain.SysRole;
 import com.learn.chapter06.domain.SysUser;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -20,4 +18,5 @@ public interface UserMapper {
 
     public List<SysUser> selectUserAndRoleByIdSelect(Long id);
 
+    List<SysUser> selectUserAndRoleByUserId_userRoleMap(Long id);
 }
